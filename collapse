@@ -1,0 +1,67 @@
+ANSWER:
+
+void collapse(Stack<int>& s)
+{
+    if (s.size() == 0){
+        return;
+    }
+	Stack<int> s2;
+	int x = s.size();
+	int sum = 0;
+	int t1 = s.top();
+	int t2 = x;
+	if (x % 2 != 0) {
+		s.pop();
+		x--;
+	}
+	for (int i = 1; i <= x; i++) {
+		sum += s.top();
+		s.pop();
+		if (i % 2 == 0) {
+			s2.push(sum);
+			sum = 0;
+		}
+	}
+	while (!s2.isEmpty()) {
+		int x = s2.top();
+		s.push(x);
+		s2.pop();
+	}
+	if (t2 % 2 != 0) {
+		s.push(t1);
+	}
+}
+
+DERIVED FROM:
+
+void collapse(stack<int>& s)
+{
+	if (s.size() == 0) {
+		return;
+	}
+	stack<int> s2;
+	int x = s.size();
+	int sum = 0;
+	int t1 = s.top();
+	int t2 = x;
+	if (x % 2 != 0) {
+		s.pop();
+		x--;
+	}
+	for (int i = 1; i <= x; i++) {
+		sum += s.top();
+		s.pop();
+		if (i % 2 == 0) {
+			s2.push(sum);
+			sum = 0;
+		}
+	}
+	while (!s2.empty()) {
+		int x = s2.top();
+		s.push(x);
+		s2.pop();
+	}
+	if (t2 % 2 != 0) {
+		s.push(t1);
+	}
+}
