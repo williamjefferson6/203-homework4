@@ -1,0 +1,35 @@
+ANSWER:
+
+void push(Queue<int>& queue, int element)
+{
+	queue.enqueue(element);
+}
+int pop(Queue<int>& queue)
+{
+	int x = queue.size();
+	for (int i = 0; i < x - 1; i++) {
+		queue.enqueue(queue.front());
+		queue.dequeue();
+	}
+	int r = queue.front();
+	queue.dequeue();
+	return r;
+}
+
+DERIVED FROM:
+
+void push(Queue<int>& queue, int element)
+{
+	queue.push(element);
+}
+int pop(Queue<int>& queue)
+{
+	int x = queue.size();
+	for (int i = 0; i < x - 1; i++) {
+		queue.push(queue.front());
+		queue.pop();
+	}
+	int r = queue.front();
+	queue.pop();
+	return r;
+}
