@@ -1,0 +1,38 @@
+ANSWER:
+
+void mirror(Queue<string> &q)
+{
+  int x = q.size();
+	Stack<string> s;
+	while (x--){
+        string y = q.front();
+        q.enqueue(y);
+        s.push(y);
+        q.dequeue();
+    }
+    int z = s.size();
+    for (int i = 0; i < z; i++){
+        string t = s.top();
+        q.enqueue(t);
+        s.pop();
+    }
+}
+
+DERIVED FROM:
+
+void mirror(queue<string>& q)
+{
+	int x = q.size();
+	stack<string> s;
+	while (x--) {
+		string y = q.front();
+		q.emplace(y);
+		s.push(y);
+		q.pop();
+	}
+	while (!s.empty()) {
+		string t = s.top();
+		q.push(t);
+		s.pop();
+	}
+}
