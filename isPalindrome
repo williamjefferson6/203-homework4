@@ -1,0 +1,61 @@
+ANSWER:
+
+bool isPalindrome(Queue<int>& q) 
+{
+	Queue<int> t1;
+	Stack<int> s;
+	int size = q.size();
+	for (int i = 0; i < size / 2; i++) {
+		int t = q.front();
+		t1.enqueue(t);
+		q.dequeue();
+	}
+	if (size % 2 != 0) {
+		q.dequeue();
+	}
+	while (!q.isEmpty()) {
+		s.push(q.front());
+		q.dequeue();
+	}
+	while (!s.isEmpty()) {
+		q.enqueue(s.top());
+		s.pop();
+	}
+	if (q == t1) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+DERIVED FROM:
+
+bool isPalindrome(queue<int>& q) 
+{
+	queue<int> t1;
+	stack<int> s;
+	int size = q.size();
+	for (int i = 0; i < size / 2; i++) {
+		int t = q.front();
+		t1.push(t);
+		q.pop();
+	}
+	if (size % 2 != 0) {
+		q.pop();
+	}
+	while (!q.empty()) {
+		s.push(q.front());
+		q.pop();
+	}
+	while (!s.empty()) {
+		q.push(s.top());
+		s.pop();
+	}
+	if (q == t1) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
