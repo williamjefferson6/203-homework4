@@ -1,0 +1,73 @@
+ANSWER:
+
+void flipHalf(Queue<int>& q) 
+{
+	Queue<int> qe, qo;
+	Stack<int> s;
+	int x = q.size();
+	for (int i = 0; i < x; i++) {
+		if (i % 2 == 0) {
+			qe.enqueue(q.front());
+			q.dequeue();
+		}
+		else {
+			qo.enqueue(q.front());
+			q.dequeue();
+		}
+	}
+	while (!qo.isEmpty()) {
+		s.push(qo.front());
+		qo.dequeue();
+	}
+	while (!s.isEmpty()) {
+		qo.enqueue(s.top());
+		s.pop();
+	}
+	for (int i = 0; i < x; i++) {
+		if (i % 2 == 0) {
+			q.enqueue(qe.front());
+			qe.dequeue();
+		}
+		else {
+			q.enqueue(qo.front());
+			qo.dequeue();
+		}
+	}
+}
+
+DERIVED FROM:
+
+void flipHalf(queue<int>& q) 
+{
+	queue<int> qe, qo;
+	stack<int> s;
+	int x = q.size();
+	for (int i = 0; i < x; i++) {
+		if (i % 2 == 0) {
+			qe.push(q.front());
+			q.pop();
+		}
+		else {
+			qo.push(q.front());
+			q.pop();
+		}
+	}
+	while (!qo.empty()) {
+		s.push(qo.front());
+		qo.pop();
+	}
+	while (!s.empty()) {
+		qo.push(s.top());
+		s.pop();
+	}
+	for (int i = 0; i < x; i++) {
+		if (i % 2 == 0) {
+			q.push(qe.front());
+			qe.pop();
+		}
+		else {
+			q.push(qo.front());
+			qo.pop();
+		}
+	}
+}
