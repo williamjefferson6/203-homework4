@@ -1,0 +1,51 @@
+ANSWER:
+
+void reorder(Queue<int>& q)
+{
+    Stack<int> s;
+    Queue<int> t;
+    while (!q.isEmpty()) {
+        if (q.front() < 0) {
+            s.push(q.front());
+            q.dequeue();
+        }
+        else {
+            t.enqueue(q.front());
+            q.dequeue();
+        }
+    }
+    while (!s.isEmpty()) {
+        q.enqueue(s.top());
+        s.pop();
+    }
+    while (!t.isEmpty()) {
+        q.enqueue(t.front());
+        t.dequeue();
+    }
+}
+
+DERIVED FROM:
+
+void reorder(queue<int>& q)
+{
+    stack<int> s;
+    queue<int> t;
+    while (!q.empty()) {
+        if (q.front() < 0) {
+            s.push(q.front());
+            q.pop();
+        }
+        else {
+            t.push(q.front());
+            q.pop();
+        }
+    }
+    while (!s.empty()) {
+        q.push(s.top());
+        s.pop();
+    }
+    while (!t.empty()) {
+        q.push(t.front());
+        t.pop();
+    }
+}
