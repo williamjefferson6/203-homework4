@@ -1,0 +1,30 @@
+ANSWER:
+
+void stutter(Queue<int> &q)
+{
+	Queue<int> t2;
+  int y = q.size();
+	for (int i = 0; i < y; i++){
+		int x = q.front();
+		t2.enqueue(x);
+		t2.enqueue(x);
+		q.dequeue();
+	}
+	q = t2;
+}
+
+
+DERIVED FROM:
+
+void stutter(queue<int> &q)
+{
+	queue<int> t1, t2;
+	t1 = q;
+	while (!t1.empty()) {
+		int x = t1.front();
+		t2.push(x);
+		t2.push(x);
+		t1.pop();
+	}
+	q = t2;
+}
