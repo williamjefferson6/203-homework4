@@ -1,0 +1,37 @@
+ANSWER:
+
+bool isSorted(Stack<int>& s)
+{
+  if (s.size() == 0){
+    return true;
+  }
+  Stack<int> t = s;
+	int x = t.top();
+  int y = t.size();
+	for (int i = 0; i < y; i++){
+	  if (x > t.top()) {
+	  return false;
+		}
+		x = t.top();
+		t.pop();
+	}
+	return true;
+}
+
+DERIVED FROM:
+
+bool isSorted(stack<int>& s)
+{
+	if (s.size() == 0) {
+		return true;
+	}
+	int x = s.top();
+	while (!s.empty()) {
+		if (x > s.top()) {
+			return false;
+		}
+		x = s.top();
+		s.pop();
+	}
+	return true;
+}
