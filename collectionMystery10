@@ -1,0 +1,69 @@
+OUTPUT
+{6, 5, 4, 2, 1, 2, 3}
+{90, 71, 84, 67, 29, 115, 84, 33}
+
+
+
+#include <iostream>
+#include <stack>
+#include <queue>
+using namespace std;
+void collectionMystery10(stack<int>& s, int n)
+{
+	stack<int> s2;
+	queue<int> q;
+
+	while (s.size() > n) {
+		int t = s.top();
+		q.push(t);
+		s.pop();
+	}
+
+	while (!s.empty()) {
+		int t = s.top();
+		s.pop();
+		s2.push(t);
+		if (t % 2 == 0) {
+			q.push(t);
+		}
+	}
+	while (!q.empty()) {
+		int t = q.front();
+		s.push(t);
+		q.pop();
+	}
+	while (!s2.empty()) {
+		int t = s2.top();
+		s.push(t);
+		s2.pop();
+	}
+}
+int main()
+{
+	stack<int> s;
+	s.push(1);
+	s.push(2);
+	s.push(3);
+	s.push(4);
+	s.push(5);
+	s.push(6);
+	collectionMystery10(s, 3);
+	while (!s.empty()) {
+		cout << s.top() << " ";
+		s.pop();
+	}
+	cout << endl;
+	stack <int> s1;
+	s1.push(67);
+	s1.push(29);
+	s1.push(115);
+	s1.push(84);
+	s1.push(33);
+	s1.push(71);
+	s1.push(90);
+	collectionMystery10(s1, 5);
+	while (!s1.empty()) {
+		cout << s1.top() << " ";
+		s1.pop();
+	}
+}
