@@ -1,0 +1,49 @@
+ANSWER:
+
+void rearrange(Queue<int>& q)
+{
+	Queue<int> qe, qo;
+	while (!q.isEmpty()) {
+		if (q.front() % 2 == 0) {
+			qe.enqueue(q.front());
+			q.dequeue();
+		}
+		else {
+			qo.enqueue(q.front());
+			q.dequeue();
+		}
+	}
+	while (!qe.isEmpty()) {
+		q.enqueue(qe.front());
+		qe.dequeue();
+	}
+	while (!qo.isEmpty()) {
+		q.enqueue(qo.front());
+		qo.dequeue();
+	}
+}
+
+DERIVED FROM:
+
+void rearrange(queue<int>& q)
+{
+	queue<int> qe, qo;
+	while (!q.empty()) {
+		if (q.front() % 2 == 0) {
+			qe.push(q.front());
+			q.pop();
+		}
+		else {
+			qo.push(q.front());
+			q.pop();
+		}
+	}
+	while (!qe.empty()) {
+		q.push(qe.front());
+		qe.pop();
+	}
+	while (!qo.empty()) {
+		q.push(qo.front());
+		qo.pop();
+	}
+}
