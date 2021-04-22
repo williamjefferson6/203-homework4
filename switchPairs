@@ -1,0 +1,83 @@
+ANSWER:
+
+void switchPairs(Stack<int>& s)
+{
+	Queue<int> q, t1;
+	Stack<int> t2;
+	int x, size = s.size();
+	if (size % 2 != 0) {
+		x = s.top();
+		s.pop();
+	}
+	while (!s.isEmpty()) {
+		t1.enqueue(s.top());
+		s.pop();
+	}
+	while (!t1.isEmpty()) {
+		for (int i = 0; i < 2; i++) {
+			t2.push(t1.front());
+			t1.dequeue();
+		}
+		while (!t2.isEmpty()) {
+			q.enqueue(t2.top());
+			t2.pop();
+		}
+	}
+	while (!q.isEmpty()) {
+		s.push(q.front());
+		q.dequeue();
+	}
+	while (!s.isEmpty()) {
+		q.enqueue(s.top());
+		s.pop();
+	}
+	while (!q.isEmpty()) {
+		s.push(q.front());
+		q.dequeue();
+	}
+	if (size % 2 != 0) {
+		s.push(x);
+	}
+}
+
+DERIVED FROM:
+
+void switchPairs(stack<int>& s)
+{
+	queue<int> q, t1;
+	stack<int> t2;
+	int x, size = s.size();
+	if (size % 2 != 0) {
+		x = s.top();
+		s.pop();
+	}
+	while (!s.empty()) {
+		t1.push(s.top());
+		s.pop();
+	}
+	while (!t1.empty()) {
+		for (int i = 0; i < 2; i++) {
+			t2.push(t1.front());
+			t1.pop();
+		}
+		while (!t2.empty()) {
+			q.push(t2.top());
+			t2.pop();
+		}
+	}
+	while (!q.empty()) {
+		s.push(q.front());
+		q.pop();
+	}
+	while (!s.empty()) {
+		q.push(s.top());
+		s.pop();
+	}
+	while (!q.empty()) {
+		s.push(q.front());
+		q.pop();
+	}
+	if (size % 2 != 0) {
+		s.push(x);
+	}
+}
