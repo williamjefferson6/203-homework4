@@ -1,0 +1,49 @@
+ANSWER:
+
+void splitStack(Stack<int> &s)
+{
+	Queue<int> qn, qp;
+	while (!s.isEmpty()) {
+		if (s.top() < 0) {
+			qn.enqueue(s.top());
+			s.pop();
+		}
+		else {
+			qp.enqueue(s.top());
+			s.pop();
+		}
+	}
+	while (!qn.isEmpty()) {
+		s.push(qn.front());
+		qn.dequeue();
+	}
+	while (!qp.isEmpty()) {
+		s.push(qp.front());
+		qp.dequeue();
+	}
+}
+
+DERIVED FROM:
+
+void splitStack(stack<int> &s)
+{
+	queue<int> qn, qp;
+	while (!s.empty()) {
+		if (s.top() < 0) {
+			qn.push(s.top());
+			s.pop();
+		}
+		else {
+			qp.push(s.top());
+			s.pop();
+		}
+	}
+	while (!qn.empty()) {
+		s.push(qn.front());
+		qn.pop();
+	}
+	while (!qp.empty()) {
+		s.push(qp.front());
+		qp.pop();
+	}
+}
