@@ -1,0 +1,59 @@
+ANSWER:
+
+void shift(Stack<int>& s, int n)
+{
+	Stack<int> s2;
+	Queue<int> q;
+	int x = s.size();
+	while (x > n) {
+		int t = s.top();
+		s2.push(t);
+		s.pop();
+		x--;
+	}
+	while (!s.isEmpty()) {
+		int t = s.top();
+		q.enqueue(t);
+		s.pop();
+	}
+	while (!s2.isEmpty()) {
+		int t = s2.top();
+		s.push(t);
+		s2.pop();
+	}
+	while (!q.isEmpty()) {
+		int t = q.front();
+		s.push(t);
+		q.dequeue();
+	}
+}
+
+DERIVED FROM:
+
+void shift(stack<int>& s, int n)
+{
+	stack<int> s2;
+	queue<int> q;
+	int x = s.size();
+	while (x > n) {
+		int t = s.top();
+		s2.push(t);
+		s.pop();
+		x--;
+	}
+	while (!s.empty()) {
+		int t = s.top();
+		q.push(t);
+		s.pop();
+	}
+	while (!s2.empty()) {
+		int t = s2.top();
+		s.push(t);
+		s2.pop();
+	}
+	while (!q.empty()) {
+		int t = q.front();
+		s.push(t);
+		q.pop();
+	}
+}
