@@ -1,0 +1,52 @@
+#include <iostream>
+#include <stack>
+#include <string>
+using namespace std;
+
+int checkBalance(string s)
+{
+	stack<int> cb, rb;
+	int cbc = 0, length = s.length(), i = 0;
+	while (length != 0) {
+		if (cbc == 0 && (rb.size() < cb.size())) {
+			return i - 1;
+		}
+		else if (s[i] == '{') {
+			if (rb.size() != 0) {
+				cbc++;
+			}
+			cb.push(i);
+		}
+		else if (s[i] == '}') {
+			if (cb.empty()) {
+				return i;
+			}
+			cb.pop();
+		}
+		else if (s[i] == '(') {
+			rb.push(i);
+		}
+		else if (s[i] == ')') {
+			if (rb.empty()) {
+				return i;
+			}
+			rb.pop();
+			cbc--;
+		}
+		length--;
+		i++;
+	}
+	if (cb.empty() && rb.empty()) {
+		return -1;
+	}
+	return s.length();
+}
+
+int main()
+{
+	cout << checkBalance("if (a(4) > 9) { foo(a(2)); }") << endl;
+	cout << checkBalance("for (i=0;i&lt;a(3};i++) { foo{); )") << endl;
+	cout << checkBalance("while (true) foo(); }{ ()") << endl;
+	cout << checkBalance("if (cbc) {") << endl;
+	cout << checkBalance("({)}") << endl;
+}
